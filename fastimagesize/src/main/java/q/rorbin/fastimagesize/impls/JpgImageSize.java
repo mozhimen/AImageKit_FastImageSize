@@ -1,4 +1,4 @@
-package q.rorbin.fastimagesize.parser;
+package q.rorbin.fastimagesize.impls;
 
 
 import java.io.IOException;
@@ -6,7 +6,9 @@ import java.io.InputStream;
 import java.nio.ByteBuffer;
 import java.util.LinkedList;
 
-import q.rorbin.fastimagesize.util.ByteArrayUtil;
+import q.rorbin.fastimagesize.commons.ImageSize;
+import q.rorbin.fastimagesize.cons.ImageType;
+import q.rorbin.fastimagesize.utils.ByteArrayUtil;
 
 
 /**

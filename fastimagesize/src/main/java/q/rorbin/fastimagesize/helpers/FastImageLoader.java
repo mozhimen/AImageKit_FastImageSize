@@ -1,22 +1,23 @@
-package q.rorbin.fastimagesize;
+package q.rorbin.fastimagesize.helpers;
 
 import android.view.View;
 
+import q.rorbin.fastimagesize.FastImageSize;
 import q.rorbin.fastimagesize.net.DefaultInputStreamProvider;
 import q.rorbin.fastimagesize.net.InputStreamProvider;
-import q.rorbin.fastimagesize.parser.ImageType;
+import q.rorbin.fastimagesize.cons.ImageType;
 import q.rorbin.fastimagesize.request.ImageSizeCallback;
 
 /**
  * @author chqiu
- *         Email:qstumn@163.com
+ * Email:qstumn@163.com
  */
 
 public class FastImageLoader {
-    InputStreamProvider mProvider;
-    String mImagePath;
-    int mOverrideSize;
-    boolean mUseCache;
+    public InputStreamProvider mProvider;
+    public String mImagePath;
+    public int mOverrideSize;
+    public boolean mUseCache;
     private FastImageSize mFastImageSize;
 
     private FastImageLoader(String imagePath, FastImageSize fastImageSize) {
@@ -27,7 +28,7 @@ public class FastImageLoader {
         mUseCache = true;
     }
 
-    static FastImageLoader newInstance(String imagePath, FastImageSize fastImageSize) {
+    public static FastImageLoader newInstance(String imagePath, FastImageSize fastImageSize) {
         return new FastImageLoader(imagePath, fastImageSize);
     }
 

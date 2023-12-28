@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FastImageSize.iml" filepath="$PROJECT_DIR$/FastImageSize.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/fastimagesize/fastimagesize.iml" filepath="$PROJECT_DIR$/fastimagesize/fastimagesize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AImageKit_FastImageSize.iml" filepath="$PROJECT_DIR$/.idea/modules/AImageKit_FastImageSize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/781038980/AImageKit_FastImageSize.SwiftKit.iml" filepath="$PROJECT_DIR$/.idea/modules/781038980/AImageKit_FastImageSize.SwiftKit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.iml" filepath="$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.main.iml" filepath="$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/-256614168/AImageKit_FastImageSize.SwiftKit.basick.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AImageKit_FastImageSize.app.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.iml" filepath="$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.main.iml" filepath="$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/fastimagesize/AImageKit_FastImageSize.fastimagesize.unitTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.iml" filepath="$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.main.iml" filepath="$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/imagek_fastimagesize/AImageKit_FastImageSize.imagek_fastimagesize.unitTest.iml" />
     </modules>
   </component>
 </project>

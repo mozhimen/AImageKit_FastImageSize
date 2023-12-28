@@ -1,4 +1,4 @@
-package q.rorbin.fastimagesize.parser;
+package q.rorbin.fastimagesize.commons;
 
 import java.io.IOException;
 import java.io.InputStream;

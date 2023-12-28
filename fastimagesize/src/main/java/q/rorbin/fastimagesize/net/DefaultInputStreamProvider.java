@@ -25,8 +25,8 @@ public class DefaultInputStreamProvider implements InputStreamProvider {
         try {
             if (imagePath.startsWith("http")) {
                 URLConnection connection = new URL(imagePath).openConnection();
-                connection.setConnectTimeout(1000);
-                connection.setReadTimeout(1000);
+                connection.setConnectTimeout(3000);
+                connection.setReadTimeout(3000);
                 connection.connect();
                 stream = connection.getInputStream();
             } else {

@@ -1,10 +1,13 @@
 package q.rorbin.fastimagesize;
 
-import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+
+import com.mozhimen.basick.utilk.kotlin.UtilKByteArrayFormat;
+import com.mozhimen.basick.utilk.kotlin.UtilKStrPath;
 
 import java.io.Closeable;
 import java.io.File;
@@ -20,21 +23,23 @@ import java.util.concurrent.Executors;
 
 import q.rorbin.fastimagesize.cache.DiskLruCache;
 import q.rorbin.fastimagesize.cache.MemoryCache;
-import q.rorbin.fastimagesize.parser.BmpImageSize;
-import q.rorbin.fastimagesize.parser.DefaultImageSize;
-import q.rorbin.fastimagesize.parser.GifImageSize;
-import q.rorbin.fastimagesize.parser.ImageSize;
-import q.rorbin.fastimagesize.parser.ImageType;
-import q.rorbin.fastimagesize.parser.JpgImageSize;
-import q.rorbin.fastimagesize.parser.PngImageSize;
+import q.rorbin.fastimagesize.helpers.FastImageLoader;
+import q.rorbin.fastimagesize.impls.BmpImageSize;
+import q.rorbin.fastimagesize.impls.DefaultImageSize;
+import q.rorbin.fastimagesize.impls.GifImageSize;
+import q.rorbin.fastimagesize.commons.ImageSize;
+import q.rorbin.fastimagesize.cons.ImageType;
+import q.rorbin.fastimagesize.impls.JpgImageSize;
+import q.rorbin.fastimagesize.impls.PngImageSize;
+import q.rorbin.fastimagesize.impls.WebpImageSize;
 import q.rorbin.fastimagesize.request.ImageSizeCallback;
 import q.rorbin.fastimagesize.request.OverrideCallback;
-import q.rorbin.fastimagesize.util.GlobalUtil;
+import q.rorbin.fastimagesize.utils.GlobalUtil;
 
 
 /**
  * @author chqiu
- *         Email:qstumn@163.com
+ * Email:qstumn@163.com
  */
 
 public class FastImageSize {
@@ -45,14 +50,14 @@ public class FastImageSize {
     private DiskLruCache mDiskLruCache;
 
     private static final FastImageSize INSTANCE = new FastImageSize();
+    private final String TAG = this.getClass().getSimpleName() + ">>>>>";
 
     private FastImageSize() {
         mImageSizes = new ArrayList<>();
         mExecutor = Executors.newCachedThreadPool();
         mHandler = new Handler(Looper.getMainLooper());
         mMemoryCache = new MemoryCache(500);
-        File diskFile = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
-                + File.separator + "FastImageSize");
+        File diskFile = new File(UtilKStrPath.Absolute.Internal.getCache(),/*Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator +*/ "FastImageSize");
         if (!diskFile.exists()) {
             diskFile.mkdirs();
         }
@@ -61,7 +66,7 @@ public class FastImageSize {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Collections.addAll(mImageSizes, new PngImageSize(), new GifImageSize(), new BmpImageSize(),
+        Collections.addAll(mImageSizes, new WebpImageSize(), new PngImageSize(), new GifImageSize(), new BmpImageSize(),
                 new JpgImageSize());
     }
 
@@ -72,35 +77,36 @@ public class FastImageSize {
         return FastImageLoader.newInstance(imagePath, INSTANCE);
     }
 
-    int[] get(FastImageLoader loader) {
-        String cacheKey = GlobalUtil.hashKeyForLru(loader.mImagePath);
-        int[] size = getByCache(cacheKey, loader.mUseCache);
-        if (size == null) {
-            InputStream stream = loader.mProvider.getInputStream(loader.mImagePath);
-            if (stream == null) {
-                return new int[3];
-            }
-            byte[] buffer = new byte[8];
-            try {
-                stream.read(buffer, 0, buffer.length);
-                ImageSize imageSize = getImageSize(buffer);
-                size = imageSize.getImageSize(stream, buffer);
-                if (size[2] != ImageType.NULL) {
-                    putToCache(cacheKey, size, loader.mUseCache);
-                }
-                closeStream(stream, false);
-            } catch (IOException e) {
-                e.printStackTrace();
-                closeStream(stream, true);
-            }
+    public int[] get(FastImageLoader loader) {
+//        String cacheKey = GlobalUtil.hashKeyForLru(loader.mImagePath);
+//        int[] size = getByCache(cacheKey, loader.mUseCache);
+//        if (size == null) {
+        int[] size = new int[3];
+        InputStream stream = loader.mProvider.getInputStream(loader.mImagePath);
+        if (stream == null) {
+            return new int[3];
         }
+        byte[] buffer = new byte[30];
+        try {
+            stream.read(buffer, 0, buffer.length);
+            ImageSize imageSize = getImageSize(buffer);
+            size = imageSize.getImageSize(stream, buffer);
+//            if (size[2] != ImageType.NULL) {
+//                putToCache(cacheKey, size, loader.mUseCache);
+//            }
+            closeStream(stream, false);
+        } catch (IOException e) {
+            e.printStackTrace();
+            closeStream(stream, true);
+        }
+//        }
         if (loader.mOverrideSize > 0 && size != null && size[2] != ImageType.NULL) {
             GlobalUtil.geometricScaling(size[0], size[1], loader.mOverrideSize, size);
         }
         return size;
     }
 
-    void get(final ImageSizeCallback callback, final FastImageLoader loader) {
+    public void get(final ImageSizeCallback callback, final FastImageLoader loader) {
         mExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -115,7 +121,7 @@ public class FastImageSize {
         });
     }
 
-    void into(final View view, FastImageLoader loader) {
+    public void into(final View view, FastImageLoader loader) {
         get(new OverrideCallback(view, loader.mOverrideSize), loader);
     }
 
@@ -193,6 +199,7 @@ public class FastImageSize {
     }
 
     private ImageSize getImageSize(byte[] buffer) {
+        Log.d(TAG, "getImageSize: str " + UtilKByteArrayFormat.bytes2strHex(buffer, buffer.length));
         for (int i = 0; i < mImageSizes.size(); i++) {
             ImageSize imageSize = mImageSizes.get(i);
             if (imageSize.isSupportImageType(buffer)) {

@@ -1,6 +1,8 @@
 package q.rorbin.fastimagesize.request;
 
-import q.rorbin.fastimagesize.parser.ImageType;
+import androidx.annotation.Nullable;
+
+import q.rorbin.fastimagesize.cons.ImageType;
 
 /**
  * @author chqiu
@@ -11,5 +13,5 @@ public interface ImageSizeCallback {
     /**
      * @param size width:int[0]   height:int[1]   type:int[2] {@link ImageType}
      */
-    void onSizeReady(int[] size);
+    void onSizeReady(@Nullable int[] size);
 }

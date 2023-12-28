@@ -1,4 +1,4 @@
-package q.rorbin.fastimagesize.parser;
+package q.rorbin.fastimagesize.cons;
 
 /**
  * @author chqiu
@@ -10,5 +10,6 @@ public class ImageType {
     public static final int PNG = 2;
     public static final int GIF = 3;
     public static final int BMP = 4;
+    public static final int RIFF = 5;
     public static final int NULL = 0;
 }

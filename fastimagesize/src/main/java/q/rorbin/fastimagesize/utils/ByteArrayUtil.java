@@ -1,9 +1,7 @@
-package q.rorbin.fastimagesize.util;
+package q.rorbin.fastimagesize.utils;
 
 import java.io.IOException;
 import java.io.InputStream;
-
-import static android.R.attr.value;
 
 /**
  * Created by chqiu on 2016/10/26.

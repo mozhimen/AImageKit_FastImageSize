@@ -1,4 +1,4 @@
-package q.rorbin.fastimagesize.util;
+package q.rorbin.fastimagesize.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

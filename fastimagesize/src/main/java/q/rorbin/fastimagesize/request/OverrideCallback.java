@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 
 import java.lang.ref.WeakReference;
 
-import q.rorbin.fastimagesize.parser.ImageType;
+import q.rorbin.fastimagesize.cons.ImageType;
 import q.rorbin.fastimagesize.R;
 
 /**
